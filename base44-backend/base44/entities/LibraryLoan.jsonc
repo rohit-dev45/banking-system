@@ -1,0 +1,66 @@
+{
+  "name": "LibraryLoan",
+  "type": "object",
+  "properties": {
+    "owner_id": {
+      "type": "string",
+      "description": "App user id of the borrower; set by the server only"
+    },
+    "book_id": {
+      "type": "string"
+    },
+    "book_title": {
+      "type": "string"
+    },
+    "book_author": {
+      "type": "string"
+    },
+    "member_email": {
+      "type": "string"
+    },
+    "member_name": {
+      "type": "string"
+    },
+    "borrowed_date": {
+      "type": "string"
+    },
+    "due_date": {
+      "type": "string"
+    },
+    "returned_date": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "borrowed",
+        "returned"
+      ],
+      "enumColors": [
+        "blue",
+        "green"
+      ]
+    }
+  },
+  "required": [
+    "book_id",
+    "status"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.owner_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": false,
+    "update": false,
+    "delete": false
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "name": "BankTransaction",
+  "type": "object",
+  "properties": {
+    "owner_id": {
+      "type": "string",
+      "description": "App user id this ledger entry belongs to; set by the server only"
+    },
+    "account_id": {
+      "type": "string"
+    },
+    "account_number": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "opening",
+        "deposit",
+        "withdrawal",
+        "transfer_in",
+        "transfer_out"
+      ],
+      "enumColors": [
+        "gray",
+        "green",
+        "red",
+        "green",
+        "red"
+      ]
+    },
+    "amount": {
+      "type": "number"
+    },
+    "balance_after": {
+      "type": "number"
+    },
+    "memo": {
+      "type": "string"
+    },
+    "counterparty": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "account_id",
+    "type",
+    "amount"
+  ],
+  "rls": {
+    "read": {
+      "data.owner_id": "{{user.id}}"
+    },
+    "create": false,
+    "update": false,
+    "delete": false
+  }
+}

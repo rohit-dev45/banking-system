@@ -1,0 +1,54 @@
+{
+  "name": "LibraryBook",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "isbn": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "year": {
+      "type": "number"
+    },
+    "total_copies": {
+      "type": "number"
+    },
+    "available_copies": {
+      "type": "number"
+    },
+    "summary": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "title",
+    "author",
+    "total_copies",
+    "available_copies"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

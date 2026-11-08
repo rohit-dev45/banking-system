@@ -1,0 +1,51 @@
+{
+  "name": "BankAccount",
+  "type": "object",
+  "properties": {
+    "owner_id": {
+      "type": "string",
+      "description": "App user id this account belongs to; set by the server only"
+    },
+    "account_number": {
+      "type": "string",
+      "description": "Unique 10-character account number"
+    },
+    "account_type": {
+      "type": "string",
+      "enum": [
+        "checking",
+        "savings"
+      ],
+      "enumColors": [
+        "blue",
+        "green"
+      ]
+    },
+    "nickname": {
+      "type": "string"
+    },
+    "holder_name": {
+      "type": "string"
+    },
+    "balance": {
+      "type": "number"
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD"
+    }
+  },
+  "required": [
+    "account_number",
+    "account_type",
+    "balance"
+  ],
+  "rls": {
+    "read": {
+      "data.owner_id": "{{user.id}}"
+    },
+    "create": false,
+    "update": false,
+    "delete": false
+  }
+}
